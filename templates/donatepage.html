@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Us🔸Donate ae</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #bodys {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .progress-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 20px;
+}
+.progress{
+    height: 20px;
+    background: #d4d7e6;
+    border-radius: 30px;
+    box-shadow: none;
+    margin-bottom: 30px;
+    overflow: visible;
+}
+.progress .progress-bar{
+    border-radius: 30px;
+    box-shadow: none;
+    position: relative;
+    animation: animate-positive 2s;
+}
+.progress .progress-bar:before{
+    content: "";
+    width: 100%;
+    height: 50%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+.progress .progress-bar:after{
+    content: "";
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #cbcbcb;
+    border: 8px solid #000;
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    z-index: 1;
+}
+@keyframes animate-positive{
+    0%{ width: 0; }
+}
+        .item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: #fff !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .item:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .item h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .item p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .btn-donate,
+        .btn-details {
+            border-radius: 20px;
+            font-size: 1rem;
+            padding: 8px 20px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-donate {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-details {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-donate:hover,
+        .btn-details:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        #bodys{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body id="bodys" class="container">
+    <h1 class="text-center mt-4 mb-4">Help Needed - List View</h1>
+
+    <div class="row">
+        {% for reqs in Emergency %}
+        <div class="col-md-6">
+            <div class="item">
+                <h2>{{ reqs.Requirement_name }}</h2>
+                <p><strong>Name:</strong> {% if reqs.First_name %}{{ reqs.First_name }}{% else %}Unknown{% endif %}</p>
+                <p><strong>Contact Number:</strong> {{ reqs.Contact_number }}</p>
+                <p><strong>Location:</strong> {{ reqs.Location }}</p>
+                <p><strong>Priority:</strong> {{ reqs.Priority }}</p>
+                 <p class="progress-title"> <strong>Funds Received : </strong><span>50</span>%</p>
+                <div class="progress">
+               <div class="progress-bar" style="width:50%; background:#3d99f9;"></div> 
+                </div>
+                <div class="text-center">
+                    <a href="transaction" class="btn btn-donate" role="button">Donate</a>
+                    
+                   
+<a href="{{ url_for('details', Contact_number=reqs.Contact_number) }}" class="btn btn-details" role="button">Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <a class="btn btn-primary text-center" style="text-decoration: none;"href="home">Go Home</a></div>
+ 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>
+     
+$(document).ready(function(){
+    $('.progress-title > span').each(function(){
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        },{
+            duration: 1500,
+            easing: 'swing',
+            step: function (now){
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
