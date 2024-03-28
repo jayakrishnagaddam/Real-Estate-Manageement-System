@@ -113,7 +113,7 @@
     </style>
 </head>
 <body id="bodys" class="container">
-    <h1 class="text-center mt-4 mb-4">Help Needed - List View</h1>
+    <h1 class="text-center mt-4 mb-4">Avaliabilities - List View</h1>
 
     <div class="row">
         {% for reqs in Emergency %}
@@ -124,12 +124,12 @@
                 <p><strong>Contact Number:</strong> {{ reqs.Contact_number }}</p>
                 <p><strong>Location:</strong> {{ reqs.Location }}</p>
                 <p><strong>Priority:</strong> {{ reqs.Priority }}</p>
-                 <p class="progress-title"> <strong>Funds Received : </strong><span>50</span>%</p>
+                 <p class="progress-title"> <strong>Applications Received : </strong><span>50</span>%</p>
                 <div class="progress">
                <div class="progress-bar" style="width:50%; background:#3d99f9;"></div> 
                 </div>
                 <div class="text-center">
-                    <a href="transaction" class="btn btn-donate" role="button">Donate</a>
+                    <a href="transaction" class="btn btn-donate" role="button">Show Interest</a>
                     
                    
 <a href="{{ url_for('details', Contact_number=reqs.Contact_number) }}" class="btn btn-details" role="button">Details</a>
